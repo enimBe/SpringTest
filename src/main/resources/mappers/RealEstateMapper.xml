@@ -3,7 +3,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
- <mapper namespace="com.enimbe.test.lesson03.dao.RealEstateDO">
+ <mapper namespace="com.enimbe.test.lesson03.dao.RealEstateDAO">
  		<select id="selectRealEstate" resultType="com.enimbe.test.lesson03.model.RealEstate" parameterType="int">
 				SELECT 
 			 			`id`
@@ -59,5 +59,69 @@
 				]]>
 				ORDER BY `id` DESC
  		</select>
+ 		
+ 		<insert id="insertRealEstate" parameterType="com.enimbe.test.lesson03.model.RealEstate">
+ 				INSERT INTO `real_estate`
+ 				(
+ 						`realtorId`
+ 						, `address`
+ 						, `area`
+ 						, `type`
+ 						, `price`
+ 						, `rentPrice`
+ 						, `createdAt`
+ 						, `updatedAt`
+ 				)
+ 				VALUES
+ 				(
+ 						#{realtorId} 
+ 						, #{address}
+ 						, #{area}
+ 						, #{type}
+ 						, #{price}
+ 						, #{rentPrice}
+ 						, now()
+ 						, now() 						
+ 				)
+ 		</insert>
  
+ 		<insert id="insertRealEstateAsField" parameterType="map">
+ 				INSERT INTO `real_estate`
+ 				(
+ 						`realtorId` 
+ 						, `address`
+ 						, `area`
+ 						, `type`
+ 						, `price`
+ 						, `rentPrice`
+ 						, `createdAt`
+ 						, `updatedAt`
+ 				)
+ 				VALUES
+ 				(
+ 						#{realtorId} 
+ 						, #{address}
+ 						, #{area}
+ 						, #{type}
+ 						, #{price}
+ 						, #{rentPrice}
+ 						, now()
+ 						, now() 						
+ 				)
+ 		</insert>
+ 		
+ 		<update id="updateRealEstate" parameterType="map">
+ 				UPDATE `real_estate`
+ 				SET
+ 					`type` = #{type},
+ 					`price` = #{price}
+ 					/* `updatedAt` = now() */
+ 				WHERE
+ 					`id` = #{id}
+ 		</update>
+ 		
+ 		<delete id="deleteRealEstate" parameterType="map">
+ 				DELETE FROM `real_estate`
+ 				WHERE id = #{id}
+ 		</delete>
  </mapper>
