@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="com.enimbe.test.lesson03.dao.RealEstateDO">
+ 		<select id="selectRealEstate" resultType="com.enimbe.test.lesson03.model.RealEstate" parameterType="int">
+				SELECT 
+			 			`id`
+			 			, `realtorId`
+			 			, `address`
+			 			, `area`
+			 			, `type`
+			 			, `price`
+			 			, `rentPrice`
+			 			, `createdAt`
+			 			, `updatedAt`
+		 		FROM
+		 				`real_estate`
+		 		WHERE
+		 				`id` = #{id}
+ 		</select>
+ 		
+ 		<select id="selectRealEstateAsRent" resultType="com.enimbe.test.lesson03.model.RealEstate" parameterType="int">
+ 				SELECT 
+			 			`id`
+			 			, `realtorId`
+			 			, `address`
+			 			, `area`
+			 			, `type`
+			 			, `price`
+			 			, `rentPrice`
+			 			, `createdAt`
+			 			, `updatedAt`
+		 		FROM
+		 				`real_estate`
+		 		WHERE
+		 				<![CDATA[ `rentPrice` < #{rentPrice} ]]>
+ 		</select>
+ 		
+ 		<select id="selectRealEstateAsAreaPrice" resultType="com.enimbe.test.lesson03.model.RealEstate" parameterType="map">
+		 		SELECT 
+			 			`id`
+			 			, `realtorId`
+			 			, `address`
+			 			, `area`
+			 			, `type`
+			 			, `price`
+			 			, `rentPrice`
+			 			, `createdAt`
+			 			, `updatedAt`
+		 		FROM
+		 				`real_estate`
+		 		WHERE
+			 	<![CDATA[
+			 			`type` = '매매'
+			 			AND `area` >= #{area}
+			 			AND `price` <= #{price}
+				]]>
+				ORDER BY `id` DESC
+ 		</select>
+ 
+ </mapper>
