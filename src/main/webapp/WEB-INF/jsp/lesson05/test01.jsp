@@ -33,11 +33,17 @@
 	
 	<h2>4. JSTL core if</h2>
 	
-	<c:set var="avg" value="(number1 + number2) / 2" />
+	<c:set var="avg" value="${(number1 + number2) / 2}" />
 	<c:if test="${avg >= 10 }">
 		<h1>${avg }</h1>
 	</c:if>
+	<c:if test="${avg < 10 }">
+		<h3>${avg }</h3>
+	</c:if>
 
+	<c:if test="${(number1 * number2) >= 100 }">
+		<c:out value="<script>alert('너무 큰 수 입니다.')</script>"  escapeXml="false"/>
+	</c:if>
 	
 </body>
 </html>
