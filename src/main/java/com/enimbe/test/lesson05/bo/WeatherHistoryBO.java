@@ -17,4 +17,8 @@ public class WeatherHistoryBO {
 	public  List<Weather> getWeather() {
 		return weatherHistoryDAO.selectWeather();
 	}
+	
+	public int addWeather(String date, String weather, String microDust, double temperatures, double precipitation, double windSpeed) {
+		return weatherHistoryDAO.insertWeather(date, weather, microDust, temperatures, precipitation, windSpeed);
+	}
 }
