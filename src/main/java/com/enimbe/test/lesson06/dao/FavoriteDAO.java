@@ -13,4 +13,8 @@ public interface FavoriteDAO {
 	public int insertFavorite(@Param("name") String name, @Param("url") String url);
 
 	public List<Favorite> selectFavorite();
+	
+	public int selectCountUrl(@Param("url") String url);
+	
+	public boolean deleteData(@Param("name") String name);
 }

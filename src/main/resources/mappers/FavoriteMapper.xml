@@ -33,4 +33,22 @@
  			`favorite`
  	</select>
  
+ 	<select id="selectCountUrl" parameterType="string" resultType="int">
+ 		SELECT
+ 			count(*)
+ 		FROM
+ 			`favorite`
+ 		WHERE `url` = #{url}
+ 	</select>
+ 	
+ 	<delete id="deleteData" parameterType="string">
+ 		DELETE FROM
+ 			`favorite`
+ 		WHERE
+ 			`name` = #{name}
+ 	</delete>
+ 	
+ 	
+ 	
+ 	
  </mapper>

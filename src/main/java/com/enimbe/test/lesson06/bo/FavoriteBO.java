@@ -21,4 +21,27 @@ public class FavoriteBO {
 	public List<Favorite> getFavoriteList() {
 		return favoriteDAO.selectFavorite();
 	}
+	
+	
+	public boolean isDuplicateUrl(String url) {
+		
+		int count = favoriteDAO.selectCountUrl(url);
+		if(count == 0) {
+			return false;
+		} else {
+			return true;
+		}
+		
+	}
+	
+	public boolean deleteFavorite(String name) {
+		
+		if(favoriteDAO.deleteData(name)) {
+			return true;
+		} else {
+			return false;
+		}
+		
+		
+	}
 }

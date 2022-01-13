@@ -1,6 +1,8 @@
 package com.enimbe.test.lesson06;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -50,4 +52,64 @@ public class FavoriteController {
 		
 		return "/lesson06/favoriteList";
 	}
+	
+	@ResponseBody
+	@GetMapping("/duplicate_url")
+	public Map<String, String> duplicateUrl(@RequestParam("url") String url) {
+		Map<String, String> result = new HashMap<>();
+		
+		if(favoriteBO.isDuplicateUrl(url)) {
+			result.put("isDuplicate", "true");
+		} else {
+			result.put("isDuplicate", "false");
+		}
+		
+		return result;
+		
+	}
+	
+	@ResponseBody
+	@GetMapping("/delete_data")
+	public boolean deleteData(@RequestParam("name") String name) {
+		
+		boolean result = favoriteBO.deleteFavorite(name);
+				
+		return result;
+		
+	}
+	
+	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
