@@ -40,7 +40,7 @@
 							<td>${status.count }</td>
 							<td>${favorite.name }</td>
 							<td><a href="${favorite.url}">${favorite.url }</a></td>
-							<td><button type="button" id="deleteBtn" class="btn btn-danger btn-block">삭제</button></td>
+							<td><button type="button" class="btn btn-danger btn-block deleteBtn" data-favorite-id="${favorite.id }">삭제</button></td>
 						</tr>
 					</c:forEach>
 				</tbody>
@@ -52,21 +52,17 @@
 				$(document).ready(function() {
 					
 					$("#deleteBtn").on("click", function() {
-						
-						var deleteSuccess = true;
+						let id = $(this).data("favorite-id");
 						
 						$.ajax({
 							type:"get",
 							url:"/lesson06/test01/delete_data",
-							data:{"name":name},
+							data:{"id":id},
 							success:function(data) {
 								if(deleteSuccess = true) {
 									alert("성공");
-									deleteSuccess = true;
-								} else {
-									alert("삭제 실패");
-									deleteSuccess = false;
-								}
+									location.reload;
+								} 
 							},
 							error:function() {
 								alert("에러발생");
