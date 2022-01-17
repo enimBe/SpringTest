@@ -111,7 +111,11 @@
             		url:"/lesson06/test02/lookup_booking",
             		data:{"name":name, "phoneNumber":phoneNumber},
             		success:function(data) {
-            			
+            			if(data == "fail") {
+            				alert("조회 결과가 없습니다.");
+            			} else {
+            				alert("이름 : " + data.name + "\n날짜 : " + data.date+ "\n일수 : " + data.day+ "\n인원 : " + data.headcount+ "\n상태 : " + data.state);
+            			}
             		},
             		error:function() {
             			alert("Error");

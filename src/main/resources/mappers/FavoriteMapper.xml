@@ -25,7 +25,7 @@
  	<select id="selectFavorite" resultType="com.enimbe.test.lesson06.model.Favorite">
  		SELECT
  			`id`
- 			,`name`
+ 			, `name`
  			, `url`
  			, `createdAt`
  			, `updatedAt`

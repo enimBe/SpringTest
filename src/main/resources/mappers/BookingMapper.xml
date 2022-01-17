@@ -49,8 +49,21 @@
 		)
 	</insert>
 	
-	<select id="searchBooking" parameterType="int" resultType="map">
-		SELECT FROM
+	<select id="searchBooking" parameterType="int" resultType="com.enimbe.test.lesson06.model.Booking">
+		SELECT 
+			`id`
+			, `name`
+			, `headcount`
+			, `day`
+			, `date`
+			, `phoneNumber`
+			, `state`
+			, `createdAt`
+			, `updatedAt`	
+		FROM
+			`booking`
+		WHERE
+			`id` = #{id}
 	</select>
 	
 </mapper>

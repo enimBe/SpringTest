@@ -27,8 +27,8 @@ public class BookingBO {
 		return bookingDAO.insertBooking(name, day, date, headcount, phoneNumber);
 	}
 	
-	public int searchBooking(String name, String phoneNumber) {
-		
+	public Booking searchBooking(int id) {
+		return bookingDAO.searchBooking(id);
 	}
 	
 }

@@ -22,5 +22,5 @@ public interface BookingDAO {
 			@Param("headcount") int headcount,
 			@Param("phoneNumber") String phoneNumber);
 	
-	public int searchBooking(int id);
+	public Booking searchBooking(int id);
 }

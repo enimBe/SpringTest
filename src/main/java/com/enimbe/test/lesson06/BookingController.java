@@ -79,12 +79,27 @@ public class BookingController {
 	
 	@ResponseBody
 	@PostMapping("/lookup_booking")
-	public String lookup(
+	public Object lookup(
 			@RequestParam("name") String name,
 			@RequestParam("phoneNumber") String phoneNumber
 			) {
 		
+		List<Booking> bookingList = bookingBO.getBookingList();
 		
+		for(Booking booking : bookingList) {
+			
+			if(name.equals(booking.getName()) && phoneNumber.equals(booking.getPhoneNumber())) {
+				
+				int id = booking.getId();
+				booking = bookingBO.searchBooking(id);
+				
+				return booking;
+			} else {
+				return "fail";
+			}
+			
+		}
+				return "fail";
 	}
 	
 	
